@@ -6,7 +6,9 @@ return {
 		return {
 			relculright = true,
 			segments = {
-				{
+				{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+				--[[
+						{
 					text = {
 						" ",
 						function(args)
@@ -18,9 +20,8 @@ return {
 						" ",
 					},
 					condition = {
-						true,
 						function()
-							return vim.bo.filetype ~= "NvimTree"
+							return vim.wo.number or vim.wo.relativenumber
 						end,
 						function(args)
 							return args.actual_curwin == args.win
@@ -30,13 +31,13 @@ return {
 					align = "right",
 					click = "v:lua.ScLa",
 				},
+				]]
 				{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 			},
 		}
 	end,
 	config = function(_, opts)
 		require("statuscol").setup(opts)
-		local hl = vim.api.nvim_get_hl(0, { name = "Normal", link = false })["fg"]
-		vim.api.nvim_set_hl(0, "cur_line", { fg = hl, bold = true })
+		vim.api.nvim_set_hl(0, "cur_line", { fg = "#ffb52a", bold = true })
 	end,
 }

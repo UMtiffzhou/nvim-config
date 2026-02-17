@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>q", function() -- Quit (n)
 end, { noremap = true, silent = true })
 
 -- nav
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true})
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- pane manager
 vim.keymap.set("n", "<M-h>", "<C-w>h", { noremap = true, silent = true })
@@ -19,6 +19,13 @@ vim.keymap.set("n", "<M-k>", "<C-w>k", { noremap = true, silent = true })
 
 -- ":sp" and ":vsp" for split and vertical split
 
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true})
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true})
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 
+-- which-key
+vim.keymap.set("n", "<leader>?", function()
+	require("Which-key").show({ global = false })
+end, { noremap = true, silent = true })
+
+-- remap copy/paste
+-- vim.keymap.set("n", "")

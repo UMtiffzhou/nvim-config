@@ -4,7 +4,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
-			ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "jsonls", "yamlls" },
+			ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "jsonls", "yamlls", "rust_analyzer" },
 		},
 		config = function(_, opts)
 			local mlsp = require("mason-lspconfig")
