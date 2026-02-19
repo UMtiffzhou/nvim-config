@@ -26,10 +26,35 @@ require("lazy").setup({
 	spec = {
 		-- import your plugins
 		{ import = "plugins" },
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+			opts = {
+				highlight = { enable = true },
+				indent = { enable = true },
+				ensure_installed = {
+					"lua",
+					"vim",
+					"vimdoc",
+					"markdown",
+					"bash",
+					"json",
+					"python",
+					"javascript",
+					"typescript",
+					"rust",
+					"go",
+				},
+				incremental_selection = { enable = true },
+			},
+			-- config = function(_, opts)
+			-- 	require("nvim-treesitter.configs").setup(opts)
+			-- end,
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "habamax" } },
+	install = { colorscheme = { "rose-pine" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })

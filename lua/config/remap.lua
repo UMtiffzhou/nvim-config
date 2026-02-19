@@ -18,8 +18,8 @@ vim.keymap.set("n", "<M-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<M-k>", "<C-w>k", { noremap = true, silent = true })
 
 -- ":sp" and ":vsp" for split and vertical split
-vim.keymap.set("n", '"', ":split<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "|", ":vsplit<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>'", ":split<CR>", { noremap = true, silent = true }) -- horiz split
+vim.keymap.set("n", "<leader><CR>", ":vsplit<CR>", { noremap = true, silent = true }) -- vertical split
 
 -- file finder
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
@@ -39,5 +39,5 @@ vim.api.nvim_set_keymap("v", "<leader>y", '"+y', { noremap = true, silent = true
 vim.api.nvim_set_keymap("n", "<leader>p", '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<leader>p", '"+p', { noremap = true, silent = true })
 
-vim.keymap.set("v", "<C-/>", "gc", { noremap = true })
-vim.keymap.set("n", "<C-/>", "gcc", { noremap = true })
+vim.keymap.set("v", "<C-_>", "gc", { remap = true })
+vim.keymap.set("n", "<C-_>", "gcc", { remap = true })
