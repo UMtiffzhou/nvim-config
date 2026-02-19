@@ -1,3 +1,4 @@
+-- lua/plugins/ufo.lua
 return {
 	"kevinhwang91/nvim-ufo",
 	event = { "BufReadPost", "BufNewFile" },
