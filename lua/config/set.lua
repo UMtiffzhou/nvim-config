@@ -2,6 +2,7 @@ vim.opt.wrap = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
