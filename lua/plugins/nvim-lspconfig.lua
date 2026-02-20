@@ -41,7 +41,7 @@ return {
 				snippet = {
 					expand = function(args)
 						vim.snippet.expand(args.body)
-					end, 
+					end,
 				},
 				mapping = cmp.mapping.preset.insert({}),
 			})
