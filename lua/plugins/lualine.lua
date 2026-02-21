@@ -42,9 +42,6 @@ return {
 					lualine_b = { "branch", "diff" },
 					lualine_c = { "diagnostics" },
 					lualine_x = {},
-					-- lualine_b = { "branch", "diff", "diagnostics" },
-					-- lualine_c = { "filename" },
-					-- lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},
@@ -59,7 +56,17 @@ return {
 				tabline = {},
 				winbar = {},
 				inactive_winbar = {},
-				extensions = {},
+				extensions = {
+					{
+						filetypes = { "fugitive", "fugitiveblame", "git", "gitcommit", "NvimTree" },
+						sections = {
+							lualine_a = { "filetype" },
+						},
+						inactive_sections = {
+							lualine_a = { "filetype" },
+						},
+					},
+				},
 			})
 		end,
 	},
