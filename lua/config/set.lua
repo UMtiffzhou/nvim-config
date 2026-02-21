@@ -15,3 +15,5 @@ vim.opt.shiftwidth = 4 -- Indent with 4 spaces
 vim.opt.softtabstop = 4 -- Tab in insert mode = 4 spaces
 vim.opt.expandtab = true -- Tabs are spaces, not actual TAB
 vim.opt.smartindent = true
+
+vim.opt.undofile = true

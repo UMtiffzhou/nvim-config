@@ -16,24 +16,71 @@ return {
 			cmd = { "clangd", "--clang-tidy=false" },
 			capabilities = caps,
 		})
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "LSP actions",
 			callback = function(event)
-				local opts = { buffer = event.buf }
-				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-				vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-				vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-				vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-				vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-				vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-				vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-				vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+				vim.keymap.set(
+					"n",
+					"K",
+					"<cmd>lua vim.lsp.buf.hover()<cr>",
+					{ buffer = event.buf, desc = "Hover documentation" }
+				)
+				vim.keymap.set(
+					"n",
+					"gd",
+					"<cmd>lua vim.lsp.buf.definition()<cr>",
+					{ buffer = event.buf, desc = "Go to definition" }
+				)
+				vim.keymap.set(
+					"n",
+					"gD",
+					"<cmd>lua vim.lsp.buf.declaration()<cr>",
+					{ buffer = event.buf, desc = "Go to declaration" }
+				)
+				vim.keymap.set(
+					"n",
+					"gi",
+					"<cmd>lua vim.lsp.buf.implementation()<cr>",
+					{ buffer = event.buf, desc = "Go to implementation" }
+				)
+				vim.keymap.set(
+					"n",
+					"gl",
+					"<cmd>lua vim.diagnostic.open_float()<cr>",
+					{ buffer = event.buf, desc = "Show line diagnostics" }
+				)
+				vim.keymap.set(
+					"n",
+					"go",
+					"<cmd>lua vim.lsp.buf.type_definition()<cr>",
+					{ buffer = event.buf, desc = "Go to type definition" }
+				)
+				vim.keymap.set(
+					"n",
+					"gr",
+					"<cmd>lua vim.lsp.buf.references()<cr>",
+					{ buffer = event.buf, desc = "Show references" }
+				)
+				vim.keymap.set(
+					"n",
+					"gs",
+					"<cmd>lua vim.lsp.buf.signature_help()<cr>",
+					{ buffer = event.buf, desc = "Show signature" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>rn",
+					"<cmd>lua vim.lsp.buf.rename()<cr>",
+					{ buffer = event.buf, desc = "Rename symbol" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>ca",
+					"<cmd>lua vim.lsp.buf.code_action()<cr>",
+					{ buffer = event.buf, desc = "LSP fixes" }
+				)
 			end,
 		})
-
 		local ok_cmp_core, cmp = pcall(require, "cmp")
 		if ok_cmp_core then
 			cmp.setup({
