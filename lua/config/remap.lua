@@ -41,3 +41,7 @@ vim.api.nvim_set_keymap("v", "<leader>p", '"+p', { noremap = true, silent = true
 
 -- esc to remove search highlighting once done
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- tab in visual selection
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent line" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Outdent line" })

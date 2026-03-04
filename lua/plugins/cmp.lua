@@ -23,7 +23,9 @@ return {
 
 			cmp.setup({
 				snippet = {
-					expand = function(args) luasnip.lsp_expand(args.body) end,
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -34,10 +36,19 @@ return {
 
 					-- Tab to jump/select
 					["<Tab>"] = cmp.mapping(function(fallback)
+						local line = vim.api.nvim_get_current_line()
+						local col = vim.api.nvim_win_get_cursor(0)[2]
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
+						-- smart tab on empty line
+						elseif line:sub(1, col):match("^%s*$") then
+							vim.api.nvim_feedkeys(
+								vim.api.nvim_replace_termcodes("<Esc>cc", true, false, true),
+								"n",
+								true
+							)
 						else
 							fallback()
 						end
