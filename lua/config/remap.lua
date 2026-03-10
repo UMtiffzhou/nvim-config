@@ -45,3 +45,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- tab in visual selection
 vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent line" })
 vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Outdent line" })
+
+-- ctrl backspace in insert mode
+vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
