@@ -1,10 +1,11 @@
+-- lua/plugins/mason.lua
 return {
 	{ "williamboman/mason.nvim", build = ":MasonUpdate", config = true },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
-			ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "jsonls", "yamlls", "rust_analyzer" },
+			ensure_installed = { "lua_ls", "ts_ls", "pyright", "bashls", "jsonls", "yamlls", "rust_analyzer", "gopls" },
 		},
 		config = function(_, opts)
 			local mlsp = require("mason-lspconfig")
@@ -23,8 +24,28 @@ return {
 				local o = { capabilities = caps }
 				if server == "lua_ls" then
 					o.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+				elseif server == "gopls" then
+					o.settings = {
+						gopls = {
+							semanticTokens = true,
+							analyses = {
+								unusedparams = true,
+							},
+							-- staticcheck = true,
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					}
 				end
-				vim.lsp.config(server, o) -- <-- new way
+
+				vim.lsp.config(server, o)
 			end
 
 			-- Let Mason install & (by default) enable them
